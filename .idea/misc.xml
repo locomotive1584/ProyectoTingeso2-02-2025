@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/backend/config/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/bill-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/loan-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/tool-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/client-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/kardex-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/report-microservice/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
