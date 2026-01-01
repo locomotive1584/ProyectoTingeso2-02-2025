@@ -17,6 +17,8 @@ public class Loan {
 
     private Date agreedDate;
 
+    private Long toolId;
+
     private Long unitId;
 
     private Long clientId;

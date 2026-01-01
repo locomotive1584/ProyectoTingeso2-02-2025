@@ -14,4 +14,6 @@ public interface ToolRepository extends JpaRepository<ToolEntity, Long> {
     public ToolEntity findById(long id);
 
     public List<ToolEntity> findByCategory(String category);
+
+    public List<ToolEntity> findByStockGreaterThan(int minStock);
 }

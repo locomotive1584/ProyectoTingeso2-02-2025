@@ -16,7 +16,7 @@ public class ClientService {
 
     RestTemplate restTemplate;
 
-    String loanUrl = "http://loan-microservice/api/loans";
+    String loanUrl = "http://loan-microservice/api/v1/loans";
 
     public List<ClientEntity> getClients() {
         return clientRepository.findAll();
@@ -50,16 +50,28 @@ public class ClientService {
             throw new Exception("El cliente no existe");
         };
         try {
-            return clientRepository.findById(id).getState().equals("Restricted");
+            return clientRepository.findById(id).getState().equals("restringido");
         } catch (Exception e) {
             throw new Exception("No se encontro un cliente");
         }
+    }
+
+    public boolean clientExists(long id){
+        return clientRepository.findById(id) != null;
     }
 
     public boolean detectUnpaidLoans(long id) throws Exception{
         try {
             List<Loan> loans = restTemplate.getForObject(loanUrl + "/getLoansByIdClient/" + id, List.class);
             return loans != null && !loans.isEmpty();
+        } catch (Exception e) {
+            throw new Exception("No se encontro un cliente");
+        }
+    }
+
+    public boolean isActive(long id) throws Exception{
+        try {
+            return !detectUnpaidLoans(id) && !detectUnpaidLoans(id);
         } catch (Exception e) {
             throw new Exception("No se encontro un cliente");
         }
@@ -88,5 +100,45 @@ public class ClientService {
         }
     }
 
+    public ClientEntity updateState(ClientEntity client, String state) throws Exception{
+        try{
+            if(state.equals("activo")|| state.equals("restringido")){
+                client.setState(state);
+                return updateClient(client);
+            }
+            else {
+                throw new Exception("Estado no permitido");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al actualizar el estado del cliente");
+        }
+    }
 
+    public boolean toolIsNotInLoans(List<Loan> loans, long toolId) {
+        if (loans == null || loans.isEmpty()) {
+            return true;
+        }
+        for (int i = 0; i < loans.size(); i++) {
+            if (loans.get(i).getToolId() == toolId) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isAllowed(long clientId, long toolId) throws Exception{
+        try {
+            List<Loan> loans = restTemplate.getForObject(loanUrl + "/getLoansByIdClient/" + clientId, List.class);
+
+            if (loans.size() < 5 && isActive(clientId)){
+
+                return toolIsNotInLoans(loans, toolId);
+            }
+            else {
+                return false;
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al revisar si el cliente es activo");
+        }
+    }
 }

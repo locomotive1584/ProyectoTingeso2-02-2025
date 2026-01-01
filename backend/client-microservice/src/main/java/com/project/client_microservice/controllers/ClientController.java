@@ -26,6 +26,22 @@ public class ClientController {
         return ResponseEntity.ok(clientEntity);
     }
 
+    @GetMapping("/isActive/{id}")
+    public ResponseEntity<Boolean> isClientActive(@PathVariable long id) throws Exception {
+        boolean answer = clientService.isActive(id);
+        return ResponseEntity.ok(answer);
+    }
+
+    @GetMapping("/isAllowed/{id}/{toolId}")
+    public ResponseEntity<Boolean> isClientAllowed(@PathVariable long id, @PathVariable long toolId) throws Exception {
+        return ResponseEntity.ok(clientService.isAllowed(id, toolId));
+    }
+
+    @GetMapping("/clientExist/{id}")
+    public ResponseEntity<Boolean> clientExist(@PathVariable long id) throws Exception {
+        return ResponseEntity.ok(clientService.clientExists(id));
+    }
+
     @PostMapping("/")
     public ResponseEntity<ClientEntity> saveClient(@RequestBody ClientEntity clientEntity) throws Exception{
         ClientEntity clientEntitySaved = clientService.saveClient(clientEntity);

@@ -16,4 +16,6 @@ public interface UnitRepository extends JpaRepository<UnitEntity, Long> {
     public List<UnitEntity> findByToolId(long id);
 
     public List<UnitEntity> findByState(String state);
+
+    public List<UnitEntity> findByToolIdAndState(long toolId, String state);
 }

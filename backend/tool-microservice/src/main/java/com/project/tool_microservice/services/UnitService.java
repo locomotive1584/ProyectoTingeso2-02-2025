@@ -115,4 +115,8 @@ public class UnitService {
             e.printStackTrace();
         }
     }
+
+    public UnitEntity getUnitByToolIdAndState(long toolId, String state){
+        return unitRepository.findByToolIdAndState(toolId, state).get(0);
+    }
 }

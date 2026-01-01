@@ -27,7 +27,7 @@ public class ClientEntity {
     private String rut;
 
     @Column(nullable = false)
-    private String state = "Activo";
+    private String state = "activo";
 
     @Column(nullable = false)
     private String email;

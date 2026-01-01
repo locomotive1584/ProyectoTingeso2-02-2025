@@ -1,6 +1,7 @@
 package com.project.tool_microservice.services;
 
 import com.project.tool_microservice.entities.ToolEntity;
+import com.project.tool_microservice.entities.UnitEntity;
 import com.project.tool_microservice.repositories.ToolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import java.util.List;
 public class ToolService {
     @Autowired
     ToolRepository toolRepository;
+    @Autowired
+    private UnitService unitService;
 
     public List<ToolEntity> getTools() {
         return toolRepository.findAll();
@@ -72,6 +75,39 @@ public class ToolService {
             int oldStock = tool.getStock();
             tool.setStock(oldStock + stock);
             updateTool(tool);
+        }
+    }
+
+    public boolean toolExist(long id) {
+        return toolRepository.getById(id) != null;
+    }
+
+    public boolean toolHasStock(long id) throws Exception {
+        try {
+            return toolRepository.getById(id).getStock() > 0;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public UnitEntity getAvaliableUnit(long id) throws Exception {
+        try{
+            if (toolRepository.getById(id) != null) {
+                if (toolRepository.getById(id).getStock() > 0) {
+                    return unitService.getUnitByToolIdAndState(id, "disponible");
+                }
+                else {
+                    throw new Exception("Herramienta no tiene stock disponible");
+                }
+            }
+            else {
+                throw new Exception("Herramienta no existe");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Error al conseguir unidad de la herramienta");
         }
     }
 }

@@ -27,6 +27,16 @@ public class ToolController {
         return ResponseEntity.ok(toolEntity);
     }
 
+    @GetMapping("/toolExist/{id}")
+    public ResponseEntity<Boolean> toolExist(@PathVariable long id) {
+        return ResponseEntity.ok(toolService.toolExist(id));
+    }
+
+    @GetMapping("/hasStock/{id}")
+    public ResponseEntity<Boolean> hasStock(@PathVariable long id) throws Exception {
+        return ResponseEntity.ok(toolService.toolHasStock(id));
+    }
+
     @PostMapping("/")
     public ResponseEntity<ToolEntity> addTool(@RequestBody ToolEntity toolEntity) throws Exception {
         ToolEntity toolEntitySaved = toolService.saveTool(toolEntity);
