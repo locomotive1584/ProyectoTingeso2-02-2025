@@ -17,4 +17,6 @@ public interface LoanRepository extends JpaRepository<LoanEntity, Long> {
     public List<LoanEntity> findAllByClientId(long id);
 
     public List<LoanEntity> findAllByUnitId(long id);
+
+    public List<LoanEntity> findByToolId(long id);
 }

@@ -26,6 +26,11 @@ public class LoanService {
 
     public LoanEntity getLoanById(long id) { return loanRepository.findById(id); }
 
+    public List<LoanEntity> getLoanByClientId(long id) {return loanRepository.findAllByClientId(id); }
+
+    public List<LoanEntity> getLoanByUnitId(long id) {return loanRepository.findAllByUnitId(id); }
+
+    public List<LoanEntity> getLoanByToolId(long id) {return loanRepository.findByToolId(id); }
 
     public LoanEntity addLoan(LoanEntity loan) throws Exception{
         boolean clientExists = restTemplate.getForObject(clientUrl + "/clientExist/" + loan.getClientId(), Boolean.class);

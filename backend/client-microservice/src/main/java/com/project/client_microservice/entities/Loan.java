@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -13,9 +13,9 @@ public class Loan {
 
     private Long id;
 
-    private Date initialDate;
+    private LocalDate initialDate;
 
-    private Date agreedDate;
+    private LocalDate agreedDate;
 
     private Long toolId;
 
@@ -23,4 +23,3 @@ public class Loan {
 
     private Long clientId;
 }
-

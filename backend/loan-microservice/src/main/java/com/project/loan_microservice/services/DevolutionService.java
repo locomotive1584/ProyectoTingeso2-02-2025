@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 
 @Service
@@ -22,6 +23,10 @@ public class DevolutionService {
     private LoanService loanService;
 
     String toolUrl = "http://tool-microservice/api/v1/tools";
+
+    public List<DevolutionEntity> getAllDevolutions() {
+        return devolutionRepository.findAll();
+    }
 
     public DevolutionEntity createDevolution(long loanId) {
 
