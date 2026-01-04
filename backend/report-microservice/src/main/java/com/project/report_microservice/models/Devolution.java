@@ -1,9 +1,4 @@
-package com.project.report_microservice.entities;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package com.project.report_microservice.models;
 
 import java.time.LocalDate;
 

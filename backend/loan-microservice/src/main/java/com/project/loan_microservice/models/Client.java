@@ -1,4 +1,4 @@
-package com.project.loan_microservice.entities;
+package com.project.loan_microservice.models;
 
 public class Client {
 

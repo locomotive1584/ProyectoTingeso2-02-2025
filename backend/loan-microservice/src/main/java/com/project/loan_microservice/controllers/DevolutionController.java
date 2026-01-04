@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/devolutions")
+@RequestMapping("/devolutions")
 @CrossOrigin("*")
 public class DevolutionController {
     @Autowired

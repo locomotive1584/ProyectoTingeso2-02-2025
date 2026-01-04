@@ -2,6 +2,10 @@ package com.project.report_microservice.services;
 
 
 import com.project.report_microservice.entities.*;
+import com.project.report_microservice.models.Client;
+import com.project.report_microservice.models.Devolution;
+import com.project.report_microservice.models.Loan;
+import com.project.report_microservice.models.Tool;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,10 +19,10 @@ public class QuerryService {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    String loanUrl = "http://loan-microservice/api/v1/loans";
-    String clientUrl = "http://client-microservice/api/v1/clients";
-    String devolutionUrl = "http://loan-microservice/api/v1/devolutions";
-    String toolUrl = "http://tool-microservice/api/v1/tools";
+    String loanUrl = "http://loan-ms/loans";
+    String clientUrl = "http://client-ms/clients";
+    String devolutionUrl = "http://loan-ms/devolutions";
+    String toolUrl = "http://tool-ms/tools";
 
 
     public List<ValidityDto> getValidityOfLoans() {

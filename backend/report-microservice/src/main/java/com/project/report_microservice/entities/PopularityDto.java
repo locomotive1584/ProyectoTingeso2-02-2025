@@ -1,5 +1,7 @@
 package com.project.report_microservice.entities;
 
+import com.project.report_microservice.models.Tool;
+
 public class PopularityDto {
 
     private long loanQuantity;

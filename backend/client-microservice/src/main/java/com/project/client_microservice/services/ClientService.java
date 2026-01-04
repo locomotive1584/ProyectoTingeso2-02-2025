@@ -16,7 +16,7 @@ public class ClientService {
 
     RestTemplate restTemplate;
 
-    String loanUrl = "http://loan-microservice/api/v1/loans";
+    String loanUrl = "http://loan-ms/loans";
 
     public List<ClientEntity> getClients() {
         return clientRepository.findAll();

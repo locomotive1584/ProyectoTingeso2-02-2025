@@ -2,7 +2,7 @@ package com.project.loan_microservice.services;
 
 import com.project.loan_microservice.entities.DevolutionEntity;
 import com.project.loan_microservice.entities.LoanEntity;
-import com.project.loan_microservice.entities.Tool;
+import com.project.loan_microservice.models.Tool;
 import com.project.loan_microservice.repositories.DevolutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class DevolutionService {
     @Autowired
     private LoanService loanService;
 
-    String toolUrl = "http://tool-microservice/api/v1/tools";
+    String toolUrl = "http://tool-ms/tools";
 
     public List<DevolutionEntity> getAllDevolutions() {
         return devolutionRepository.findAll();

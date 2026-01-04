@@ -1,4 +1,4 @@
-package com.project.report_microservice.entities;
+package com.project.report_microservice.models;
 
 public class Tool {
 

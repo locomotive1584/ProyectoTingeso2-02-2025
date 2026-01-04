@@ -1,8 +1,6 @@
 package com.project.loan_microservice.services;
 
-import com.project.loan_microservice.entities.Client;
 import com.project.loan_microservice.entities.LoanEntity;
-import com.project.loan_microservice.entities.Tool;
 import com.project.loan_microservice.repositories.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +15,10 @@ public class LoanService {
 
     RestTemplate restTemplate;
 
-    String clientUrl = "http://client-microservice/api/v1/clients";
-    String unitUrl = "http://unit-microservice/api/v1/units";
-    String toolUrl = "http://tool-microservice/api/v1/tools";
-    String movementsUrl = "http://kardex-microservice/api/v1/movements";
+    String clientUrl = "http://client-ms/clients";
+    String unitUrl = "http://unit-ms/units";
+    String toolUrl = "http://tool-ms/tools";
+    String movementsUrl = "http://kardex-ms/movements";
 
     public List<LoanEntity> getLoans() { return loanRepository.findAll(); }
 

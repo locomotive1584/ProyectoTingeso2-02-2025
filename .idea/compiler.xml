@@ -2,20 +2,16 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="kardex-microservice" />
         <module name="eureka" />
-        <module name="loan-microservice" />
-        <module name="bill-microservice" />
         <module name="config" />
-        <module name="tool-microservice" />
-        <module name="client-microservice" />
         <module name="gateway" />
       </profile>
-      <profile name="Annotation profile for report-microservice" enabled="true">
+      <profile name="Annotation profile for tool-microservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -23,6 +19,11 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
         <module name="report-microservice" />
+        <module name="kardex-microservice" />
+        <module name="bill-microservice" />
+        <module name="tool-microservice" />
+        <module name="client-microservice" />
+        <module name="loan-microservice" />
       </profile>
     </annotationProcessing>
   </component>

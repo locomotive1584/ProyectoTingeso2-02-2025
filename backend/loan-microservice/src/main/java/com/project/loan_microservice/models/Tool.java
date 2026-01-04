@@ -1,6 +1,4 @@
-package com.project.loan_microservice.entities;
-
-import jakarta.persistence.Column;
+package com.project.loan_microservice.models;
 
 public class Tool {
 
