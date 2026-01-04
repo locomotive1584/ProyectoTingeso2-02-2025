@@ -7,13 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class ToolService {
     @Autowired
     ToolRepository toolRepository;
-    @Autowired
-    private UnitService unitService;
 
     public List<ToolEntity> getTools() {
         return toolRepository.findAll();
@@ -89,25 +86,6 @@ public class ToolService {
         catch (Exception e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-    public UnitEntity getAvaliableUnit(long id) throws Exception {
-        try{
-            if (toolRepository.getById(id) != null) {
-                if (toolRepository.getById(id).getStock() > 0) {
-                    return unitService.getUnitByToolIdAndState(id, "disponible");
-                }
-                else {
-                    throw new Exception("Herramienta no tiene stock disponible");
-                }
-            }
-            else {
-                throw new Exception("Herramienta no existe");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("Error al conseguir unidad de la herramienta");
         }
     }
 }

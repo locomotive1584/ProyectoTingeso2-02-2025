@@ -119,4 +119,23 @@ public class UnitService {
     public UnitEntity getUnitByToolIdAndState(long toolId, String state){
         return unitRepository.findByToolIdAndState(toolId, state).get(0);
     }
+
+    public UnitEntity getAvaliableUnit(long toolId) throws Exception {
+        try{
+            if (toolService.getToolById(toolId) != null) {
+                if (toolService.getToolById(toolId).getStock() > 0) {
+                    return getUnitByToolIdAndState(toolId, "disponible");
+                }
+                else {
+                    throw new Exception("Herramienta no tiene stock disponible");
+                }
+            }
+            else {
+                throw new Exception("Herramienta no existe");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Error al conseguir unidad de la herramienta");
+        }
+    }
 }

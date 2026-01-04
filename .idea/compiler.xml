@@ -7,11 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka" />
         <module name="config" />
+        <module name="tool-microservice" />
+        <module name="eureka" />
         <module name="gateway" />
       </profile>
-      <profile name="Annotation profile for tool-microservice" enabled="true">
+      <profile name="Annotation profile for loan-microservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -21,7 +22,6 @@
         <module name="report-microservice" />
         <module name="kardex-microservice" />
         <module name="bill-microservice" />
-        <module name="tool-microservice" />
         <module name="client-microservice" />
         <module name="loan-microservice" />
       </profile>
