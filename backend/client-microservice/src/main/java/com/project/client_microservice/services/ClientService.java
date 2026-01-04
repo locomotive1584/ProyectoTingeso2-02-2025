@@ -1,7 +1,7 @@
 package com.project.client_microservice.services;
 
 import com.project.client_microservice.entities.ClientEntity;
-import com.project.client_microservice.entities.Loan;
+import com.project.client_microservice.models.Loan;
 import com.project.client_microservice.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

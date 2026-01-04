@@ -1,4 +1,4 @@
-package com.project.client_microservice.entities;
+package com.project.client_microservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
