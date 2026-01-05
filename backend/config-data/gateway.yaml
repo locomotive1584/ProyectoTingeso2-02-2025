@@ -23,18 +23,18 @@ spring:
             - Path=/clients/**
 
         - id: loan-ms
-          uri: lb://loan-ms
+          uri: lb://LOAN-MS
           predicates:
             - Path=/loans/**
             - Path=/devolutions/**
 
         - id: report-ms
-          uri: lb://report-ms
+          uri: lb://REPORT-MS
           predicates:
             - Path=/reports/**
 
         - id: tool-ms
-          uri: lb://tool-ms
+          uri: lb://TOOL-MS
           predicates:
             - Path=/tools/**
             - Path=/units/**
