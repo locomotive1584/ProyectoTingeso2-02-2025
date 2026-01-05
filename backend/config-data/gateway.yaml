@@ -7,8 +7,10 @@ eureka:
     register-with-eureka: true
     service-url:
       default-zone: http://localhost:8761/eureka
+    registry-fetch-interval-seconds: 5
   instance:
     hostname: localhost
+    prefer-ip-address: false
 
 spring:
   cloud:
@@ -25,8 +27,7 @@ spring:
         - id: loan-ms
           uri: lb://LOAN-MS
           predicates:
-            - Path=/loans/**
-            - Path=/devolutions/**
+            - Path=/loans/**, /devolutions/**
 
         - id: report-ms
           uri: lb://REPORT-MS
@@ -36,5 +37,4 @@ spring:
         - id: tool-ms
           uri: lb://TOOL-MS
           predicates:
-            - Path=/tools/**
-            - Path=/units/**
+            - Path=/tools/**, /units/**
