@@ -33,6 +33,12 @@ public class UnitController {
         return ResponseEntity.ok(unitEntitySaved);
     }
 
+    @PostMapping("/{toolId}/{quantity}/{state}")
+    public ResponseEntity<UnitEntity> createQuantityUnits(@PathVariable("toolId") long toolId, @PathVariable("quantity") int quantity, @PathVariable("state") String state) throws Exception {
+        UnitEntity unitEntity = unitService.saveQuantity(toolId, quantity, state);
+        return ResponseEntity.ok(unitEntity);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<UnitEntity> deleteUnit(@PathVariable("id") long id) throws Exception{
         var unitEntity = unitService.deleteUnit(id);

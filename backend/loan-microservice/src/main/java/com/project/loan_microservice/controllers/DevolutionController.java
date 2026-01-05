@@ -21,7 +21,7 @@ public class DevolutionController {
     }
 
     @GetMapping("/cost/{id}")
-    public ResponseEntity<Long> getDevolutionCost(@PathVariable long id) {
+    public ResponseEntity<Long> getDevolutionCost(@PathVariable("id") long id) {
         return ResponseEntity.ok(devolutionService.calculateCost(id));
     }
 

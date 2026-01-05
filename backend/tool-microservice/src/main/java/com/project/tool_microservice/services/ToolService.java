@@ -35,7 +35,7 @@ public class ToolService {
             throw new Exception("Herramienta es nula");
         }
         else if (checkBasicData(tool)) {
-            toolRepository.save(tool);
+            return toolRepository.save(tool);
         }
         throw new Exception("Herramienta tiene datos basicos nulos");
     }

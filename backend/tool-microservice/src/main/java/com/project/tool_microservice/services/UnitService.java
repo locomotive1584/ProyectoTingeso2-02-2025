@@ -57,9 +57,42 @@ public class UnitService {
             if (isAnAddingState(unit.getState())) {
                 toolService.addStock(unit.getToolId(), 1);
             }
-            unitRepository.save(unit);
+            return unitRepository.save(unit);
         }
         throw new Exception("La unidad no tiene datos permitidos (OBSERVAR ESTADO)");
+    }
+
+    public UnitEntity saveQuantity(long toolId, int quantity, String state) throws Exception{
+        try {
+            boolean isAAllowedStates = state.equals("disponible") || state.equals("prestada")
+                    || state.equals("en reparacion") || state.equals("dada de baja");
+            if (toolService.getToolById(toolId) != null && isAAllowedStates){
+
+                for (int i = 0; i < quantity-1; i++) {
+                    UnitEntity unit = new UnitEntity();
+                    unit.setToolId(toolId);
+                    unit.setState(state);
+
+                    saveUnit(unit);
+                }
+
+                UnitEntity unit = new UnitEntity();
+                unit.setState(state);
+                unit.setToolId(toolId);
+
+                return saveUnit(unit);
+
+            }
+            else if (toolService.getToolById(toolId) == null) {
+                throw new Exception("Herramienta no puede ser nulo");
+            }
+            else {
+                throw new Exception("Estado invalido");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public boolean deleteUnit(long id) throws Exception{
@@ -98,7 +131,7 @@ public class UnitService {
                     updateUnit(unit);
                 }
 
-                else if (isASubstractingState(state)){
+                else if (isASubstractingState(state) && state.equals("prestada")){
                     toolService.addStock(unit.getToolId(), -1);
                     unit.setState(state);
                     updateUnit(unit);

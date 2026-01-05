@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -15,10 +16,11 @@ public class LoanService {
 
     RestTemplate restTemplate;
 
-    String clientUrl = "http://client-ms/clients";
-    String unitUrl = "http://unit-ms/units";
-    String toolUrl = "http://tool-ms/tools";
-    String movementsUrl = "http://kardex-ms/movements";
+    String gatewayUrl = "http://localhost:8081";
+    String toolUrl = gatewayUrl + "/tools";
+    String clientUrl = gatewayUrl + "/clients";
+    String unitUrl = gatewayUrl + "/units";
+    String movementsUrl = gatewayUrl + "/movements";
 
     public List<LoanEntity> getLoans() { return loanRepository.findAll(); }
 
@@ -29,6 +31,12 @@ public class LoanService {
     public List<LoanEntity> getLoanByUnitId(long id) {return loanRepository.findAllByUnitId(id); }
 
     public List<LoanEntity> getLoanByToolId(long id) {return loanRepository.findByToolId(id); }
+
+    public List<LoanEntity> getLoanByInitialDateBetween(LocalDate date1, LocalDate date2) {return loanRepository.findByInitialDateBetween(date1, date2); }
+
+    public List<LoanEntity> getLoanByInitialDateAfter(LocalDate date) {return loanRepository.findByInitialDateAfter(date); }
+
+    public List<LoanEntity> getLoanByInitialDateBefore(LocalDate date) {return loanRepository.findByInitialDateBefore(date); }
 
     public LoanEntity addLoan(LoanEntity loan) throws Exception{
         boolean clientExists = restTemplate.getForObject(clientUrl + "/clientExist/" + loan.getClientId(), Boolean.class);

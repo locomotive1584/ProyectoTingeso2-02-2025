@@ -16,7 +16,8 @@ public class ClientService {
 
     RestTemplate restTemplate;
 
-    String loanUrl = "http://loan-ms/loans";
+    String gatewayUrl = "http://localhost:8081";
+    String loanUrl = gatewayUrl + "/loans";
 
     public List<ClientEntity> getClients() {
         return clientRepository.findAll();
@@ -62,7 +63,7 @@ public class ClientService {
 
     public boolean detectUnpaidLoans(long id) throws Exception{
         try {
-            List<Loan> loans = restTemplate.getForObject(loanUrl + "/getLoansByIdClient/" + id, List.class);
+            List<Loan> loans = restTemplate.getForObject(loanUrl + "/getByClientId/" + id, List.class);
             return loans != null && !loans.isEmpty();
         } catch (Exception e) {
             throw new Exception("No se encontro un cliente");
@@ -128,7 +129,7 @@ public class ClientService {
 
     public boolean isAllowed(long clientId, long toolId) throws Exception{
         try {
-            List<Loan> loans = restTemplate.getForObject(loanUrl + "/getLoansByIdClient/" + clientId, List.class);
+            List<Loan> loans = restTemplate.getForObject(loanUrl + "/getByClientId/" + clientId, List.class);
 
             if (loans.size() < 5 && isActive(clientId)){
 

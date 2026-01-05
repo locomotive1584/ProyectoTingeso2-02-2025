@@ -21,24 +21,24 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientEntity> getClientById(@PathVariable long id) {
+    public ResponseEntity<ClientEntity> getClientById(@PathVariable("id") long id) {
         ClientEntity clientEntity = clientService.getClientById(id);
         return ResponseEntity.ok(clientEntity);
     }
 
     @GetMapping("/isActive/{id}")
-    public ResponseEntity<Boolean> isClientActive(@PathVariable long id) throws Exception {
+    public ResponseEntity<Boolean> isClientActive(@PathVariable("id") long id) throws Exception {
         boolean answer = clientService.isActive(id);
         return ResponseEntity.ok(answer);
     }
 
     @GetMapping("/isAllowed/{id}/{toolId}")
-    public ResponseEntity<Boolean> isClientAllowed(@PathVariable long id, @PathVariable long toolId) throws Exception {
+    public ResponseEntity<Boolean> isClientAllowed(@PathVariable("id") long id, @PathVariable("toolId") long toolId) throws Exception {
         return ResponseEntity.ok(clientService.isAllowed(id, toolId));
     }
 
     @GetMapping("/clientExist/{id}")
-    public ResponseEntity<Boolean> clientExist(@PathVariable long id) throws Exception {
+    public ResponseEntity<Boolean> clientExist(@PathVariable("id") long id) throws Exception {
         return ResponseEntity.ok(clientService.clientExists(id));
     }
 
@@ -49,7 +49,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ClientEntity> deleteClient(@PathVariable long id) throws Exception {
+    public ResponseEntity<ClientEntity> deleteClient(@PathVariable("id") long id) throws Exception {
         var clientEntity = clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
     }
