@@ -22,4 +22,28 @@ public class Loan {
     private Long unitId;
 
     private Long clientId;
+
+    public LocalDate getAgreedDate() {
+        return agreedDate;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDate getInitialDate() {
+        return initialDate;
+    }
+
+    public Long getToolId() {
+        return toolId;
+    }
+
+    public Long getUnitId() {
+        return unitId;
+    }
 }
