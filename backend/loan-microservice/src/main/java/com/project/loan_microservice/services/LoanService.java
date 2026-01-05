@@ -16,11 +16,10 @@ public class LoanService {
 
     RestTemplate restTemplate;
 
-    String gatewayUrl = "http://localhost:8081";
-    String toolUrl = gatewayUrl + "/tools";
-    String clientUrl = gatewayUrl + "/clients";
-    String unitUrl = gatewayUrl + "/units";
-    String movementsUrl = gatewayUrl + "/movements";
+    String toolUrl = "http://TOOL-MS/tools";
+    String clientUrl = "http://CLIENT-MS/clients";
+    String unitUrl = "http://TOOL-MS/units";
+    String movementsUrl = "http://KARDEX-MS/movements";
 
     public List<LoanEntity> getLoans() { return loanRepository.findAll(); }
 

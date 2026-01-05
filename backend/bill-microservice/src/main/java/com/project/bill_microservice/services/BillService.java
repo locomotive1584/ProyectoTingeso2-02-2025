@@ -9,8 +9,7 @@ public class BillService {
 
     RestTemplate restTemplate;
 
-    String gatewayUrl = "http://localhost:8081";
-    String toolUrl = gatewayUrl + "/tools";
+    String toolUrl = "http://TOOL-MS/tools";
 
     public void setDailyCost(long toolId, int dailyCost) throws Exception {
         try {

@@ -19,11 +19,10 @@ public class ReportService {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    String gatewayUrl = "http://localhost:8081";
-    String toolUrl = gatewayUrl + "/tools";
-    String loanUrl = gatewayUrl + "/loans";
-    String clientUrl = gatewayUrl + "/clients";
-    String devolutionUrl = gatewayUrl + "/devolutions";
+    String toolUrl = "http://TOOL-MS/tools";
+    String clientUrl = "http://CLIENT-MS/clients";
+    String loanUrl = "http://LOAN-MS/loans";
+    String devolutionUrl = "http://LOAN-MS/devolutions";
 
 
     public List<ValidityDto> getValidityOfLoans() {

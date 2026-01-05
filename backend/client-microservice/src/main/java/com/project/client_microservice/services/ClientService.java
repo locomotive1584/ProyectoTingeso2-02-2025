@@ -16,8 +16,7 @@ public class ClientService {
 
     RestTemplate restTemplate;
 
-    String gatewayUrl = "http://localhost:8081";
-    String loanUrl = gatewayUrl + "/loans";
+    String loanUrl = "http://LOAN-MS/loans";
 
     public List<ClientEntity> getClients() {
         return clientRepository.findAll();

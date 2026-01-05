@@ -22,8 +22,7 @@ public class DevolutionService {
     @Autowired
     private LoanService loanService;
 
-    String gatewayUrl = "http://localhost:8081";
-    String toolUrl = gatewayUrl + "/tools";
+    String toolUrl = "http://TOOL-MS/tools";
 
     public List<DevolutionEntity> getAllDevolutions() {
         return devolutionRepository.findAll();

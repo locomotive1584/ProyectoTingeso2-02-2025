@@ -43,3 +43,8 @@ spring:
           uri: lb://TOOL-MS
           predicates:
             - Path=/tools/**, /units/**
+
+        - id: kardex-ms
+          uri: lb://KARDEX-MS
+          predicates:
+            - Path=/kardex/**, /movements/**

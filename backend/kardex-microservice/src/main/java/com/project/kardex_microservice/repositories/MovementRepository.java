@@ -14,11 +14,15 @@ public interface MovementRepository extends JpaRepository<MovementEntity, Long> 
 
     public MovementEntity findById(long id);
 
+    public List<MovementEntity> findByClientId(long id);
+
+    public List<MovementEntity> findByUnitId(Long unitId);
+
+    public List<MovementEntity> findByDate(LocalDate date);
+
     public List<MovementEntity> findByDateBetween(LocalDate date1, LocalDate date2);
 
     public List<MovementEntity> findByDateBefore(LocalDate date);
 
     public List<MovementEntity> findByDateAfter(LocalDate date);
-
-    public List<MovementEntity> findByUnitId(Long unitId);
 }
