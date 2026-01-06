@@ -49,6 +49,7 @@ cd tool-microservice
 docker build -t locomotive1584/tool-microservice:latest .
 docker push locomotive1584/tool-microservice:latest
 cd ..
+cd ..
 
 ####################
 ##### Frontend #####
@@ -59,9 +60,22 @@ docker build -t locomotive1584/frontend:latest .
 docker push locomotive1584/frontend:latest
 cd ..
 
-<!-- Kubernetes -->
+##################
+### Kubernetes ###
+##################
 
-<!-- DB delete -->
+cd deployment
+
+minikube stop
+
+minikube delete
+
+minikube start --driver=docker
+
+#################
+### DB delete ###
+#################
+
 kubectl delete -f postgres-config-map.yaml
 kubectl delete -f postgres-secrets.yaml 
 kubectl delete -f postgres-dp-sv-pvc.yaml
@@ -85,7 +99,7 @@ kubectl apply -f postgres-dp-sv-pvc.yaml
 
 <!-- Crear las bases de datos en el pod -->
 kubectl get pods
-kubectl exec -it postgres-7c6cb6f776-r9wwc -- psql -U postgres
+kubectl exec -it postgres-[ALGO AQUI] -- psql -U postgres
 
 <!-- Crear las bases de datos -->
 CREATE DATABASE bill-db;
