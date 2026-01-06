@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/devolutions")
-@CrossOrigin("*")
 public class DevolutionController {
     @Autowired
     DevolutionService devolutionService;
@@ -23,6 +22,11 @@ public class DevolutionController {
     @GetMapping("/cost/{id}")
     public ResponseEntity<Long> getDevolutionCost(@PathVariable("id") long id) {
         return ResponseEntity.ok(devolutionService.calculateCost(id));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DevolutionEntity> getDevolutionById(@PathVariable("id") long id) {
+        return ResponseEntity.ok(devolutionService.getDevolutionById(id));
     }
 
     @PostMapping("/")

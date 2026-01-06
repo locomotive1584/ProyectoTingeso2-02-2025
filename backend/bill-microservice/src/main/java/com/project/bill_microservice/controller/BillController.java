@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/bills")
-@CrossOrigin("*")
 public class BillController {
     @Autowired
     BillService billService;

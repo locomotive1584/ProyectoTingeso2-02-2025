@@ -1,6 +1,7 @@
 package com.project.loan_microservice.services;
 
 import com.project.loan_microservice.entities.LoanEntity;
+import com.project.loan_microservice.models.Unit;
 import com.project.loan_microservice.repositories.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,17 @@ public class LoanService {
     public LoanEntity addLoan(LoanEntity loan) throws Exception{
         boolean clientExists = restTemplate.getForObject(clientUrl + "/clientExist/" + loan.getClientId(), Boolean.class);
         boolean toolExists = restTemplate.getForObject(toolUrl + "/toolExist/" + loan.getToolId(), Boolean.class);
+
+        Unit unit = restTemplate.getForObject(unitUrl + "/" + loan.getUnitId(), Unit.class);
+
+        if (unit == null){
+            throw new Exception("Unidad innexistente");
+        }
+
+        if (!unit.getState().equals("disponible")){
+            throw new Exception("Unidad no disponible");
+        }
+
         if(!clientExists || !toolExists) {
             throw new Exception("Cliente o herramienta nulas");
         }
@@ -50,6 +62,13 @@ public class LoanService {
         if(!hasStock){
             throw new Exception("Stock no disponible");
         }
-        return loanRepository.save(loan);
+
+        LoanEntity savedLoan = loanRepository.save(loan);
+
+        unit.setState("prestada");
+
+        restTemplate.put(unitUrl + "/" + loan.getToolId(), savedLoan);
+
+        return savedLoan;
     }
 }

@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/loans")
-@CrossOrigin("*")
 public class LoanController {
     @Autowired
     LoanService loanService;

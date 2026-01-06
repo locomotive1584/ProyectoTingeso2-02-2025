@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movements")
-@CrossOrigin("*")
 public class MovementController {
     @Autowired
     MovementService movementService;

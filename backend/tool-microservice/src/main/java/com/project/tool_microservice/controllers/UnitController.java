@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/units")
-@CrossOrigin("*")
 public class UnitController {
     @Autowired
     UnitService unitService;
@@ -25,6 +24,22 @@ public class UnitController {
     public ResponseEntity<UnitEntity> getUnitById(@PathVariable("id") long id) {
         UnitEntity unitEntity = unitService.getUnitById(id);
         return ResponseEntity.ok(unitEntity);
+    }
+
+    @GetMapping("/tool/{toolId}/available")
+    public ResponseEntity<List<UnitEntity>> getAvailableUnitsByToolId(@PathVariable("toolId") long toolId) {
+        List<UnitEntity> units = unitService.getUnitsByToolIdAndState(toolId, "disponible");
+        return ResponseEntity.ok(units);
+    }
+
+    @GetMapping("/tool/{toolId}/first-available")
+    public ResponseEntity<UnitEntity> getFirstAvailableUnitByToolId(@PathVariable("toolId") long toolId) throws Exception {
+        UnitEntity unit = unitService.getAvaliableUnit(toolId);
+        if (unit != null) {
+            return ResponseEntity.ok(unit);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
     @PostMapping("/")
@@ -50,4 +65,6 @@ public class UnitController {
         UnitEntity unit = unitService.updateUnit(unitEntity);
         return ResponseEntity.ok(unit);
     }
+
+
 }

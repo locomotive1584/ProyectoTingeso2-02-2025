@@ -28,6 +28,8 @@ public class DevolutionService {
         return devolutionRepository.findAll();
     }
 
+    public DevolutionEntity getDevolutionById(long id) { return devolutionRepository.findById(id); }
+
     public DevolutionEntity createDevolution(long loanId) {
 
         DevolutionEntity devolutionEntity = new DevolutionEntity();

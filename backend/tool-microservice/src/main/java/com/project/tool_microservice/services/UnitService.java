@@ -57,6 +57,10 @@ public class UnitService {
             if (isAnAddingState(unit.getState())) {
                 toolService.addStock(unit.getToolId(), 1);
             }
+
+
+
+
             return unitRepository.save(unit);
         }
         throw new Exception("La unidad no tiene datos permitidos (OBSERVAR ESTADO)");
@@ -151,6 +155,10 @@ public class UnitService {
 
     public UnitEntity getUnitByToolIdAndState(long toolId, String state){
         return unitRepository.findByToolIdAndState(toolId, state).get(0);
+    }
+
+    public List<UnitEntity> getUnitsByToolIdAndState(long toolId, String state){
+        return unitRepository.findByToolIdAndState(toolId, state);
     }
 
     public UnitEntity getAvaliableUnit(long toolId) throws Exception {
